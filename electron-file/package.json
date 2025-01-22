@@ -1,0 +1,96 @@
+{
+  "name": "electron-file",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "electron/main.js",
+  "description": "批量修改工具",
+  "author": "hanchao",
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build --force",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "format": "prettier --write src/",
+    "electron:dev": "concurrently vite \"electron .\"",
+    "electron:build": "npm run build && electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "@types/pdfjs-dist": "^2.10.378",
+    "@ant-design/icons-vue": "^7.0.1",
+    "ant-design-vue": "^4.1.2",
+    "pinia": "^2.1.7",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0",
+    "pdfjs-dist": "^4.1.392"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.3.3",
+    "@tsconfig/node20": "^20.1.2",
+    "@types/bluebird": "^3.5.42",
+    "@types/node": "^20.11.30",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vue/eslint-config-prettier": "^8.0.0",
+    "@vue/eslint-config-typescript": "^12.0.0",
+    "@vue/tsconfig": "^0.5.1",
+    "bluebird": "^3.7.2",
+    "concurrently": "^8.2.2",
+    "electron": "^29.1.5",
+    "electron-builder": "^24.13.3",
+    "eslint": "^8.49.0",
+    "eslint-plugin-vue": "^9.17.0",
+    "npm-run-all2": "^6.1.2",
+    "prettier": "^3.0.3",
+    "typescript": "~5.4.0",
+    "unplugin-vue-components": "^0.26.0",
+    "vite": "^5.1.6",
+    "vite-plugin-optimizer": "^1.4.3",
+    "vite-plugin-top-level-await": "^1.4.1",
+    "vue-tsc": "^2.0.6"
+  },
+  "build": {
+    "appId": "12345678543245",
+    "productName": "批量修改工具",
+    "copyright": "Copyright © year ${author}",
+    "directories": {
+      "output": "app_client"
+    },
+    "mac": {
+      "category": "public.app-category.music",
+      "icon": "build/icon.icns",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "win": {
+      "icon": "public/aaa.png",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
